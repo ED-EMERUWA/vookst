@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vookst</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth fade effect */
+    #vookst_bg {
+      transition: opacity 0.8s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+  <script>
+    // Array of images to cycle through
+    const images = [
+      "image1.png",
+      "image2.png",
+      "image3.png"
+    ];
+    let currentIndex = 0;
+
+    function changeBackground() {
+      const bg = document.getElementById('vookst_bg');
+      bg.style.opacity = 0; // Fade out
+
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length; // Loop through images
+        console.log(currentIndex)
+        bg.style.backgroundImage = `url(${images[currentIndex]})`;
+        bg.style.opacity = 1; // Fade in
+      }, 800); // Matches transition duration
+    }
+
+    // Start auto background change on page load
+    window.onload = function() {
+      const bg = document.getElementById('vookst_bg');
+      bg.style.backgroundImage = `url(${images[currentIndex]})`;
+      setInterval(changeBackground, 5000); // Change every 5 seconds
+    };
+  </script>
+</head>
+<body>
+  <header class="text-white mx-auto text-center">
+    <div>
+      <span class="flex justify-between bg-black items-center">
+        <span class="py-4 bg-red-500 px-2">Monday - Saturday: 8AM -5PM</span>
+        <span class="space-x-2 px-2 flex flex-row mx-4">
+          <p>+234123567890</p>
+          <p>info@vookst.com</p>
+        </span>
+      </span>
+
+      <span class="bg-white text-black px-4 flex flex-row justify-between items-center py-4">
+        <a href="./index.html"><img src="" alt="Vookst Logo"></a>
+        <nav class="flex flex-row justify-between space-x-3">
+          <a href="" class="hover:underline hover:text-red-500">Home</a>
+          <a href="" class="hover:underline hover:text-red-500">About</a>
+          <a href="" class="hover:underline hover:text-red-500">Projects</a>
+          <a href="" class="hover:underline hover:text-red-500">Investors</a>
+          <a href="" class="hover:underline hover:text-red-500">Careers</a>
+          <a href="" class="hover:underline hover:text-red-500">Publications</a>
+        </nav>
+        <a href="" class="bg-red-500 text-white px-4 py-2 rounded">Request a Quote</a>
+      </span>
+    </div>
+  </header>
+
+  <main class="p-8 max-w-2xl mx-auto my-8 bg-white rounded-lg shadow-md">
+    <!-- Background container -->
+    <div id="vookst_bg" class="h-64 flex items-center justify-center text-white font-bold">
+      Auto-fading background!
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-4">About</h2>
+    <p class="text-gray-700">This is a simple HTML website template. You can customize it to fit your needs.</p>
+  </main>
+
+  <footer class="text-center py-4 bg-gray-900 text-gray-300 fixed w-full bottom-0">
+    &copy; 2024 Vookst. All rights reserved.
+  </footer>
+</body>
+</html>
