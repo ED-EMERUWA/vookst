@@ -9,39 +9,49 @@
   <style>
     /* Smooth fade effect */
     #vookst_bg {
-      transition: opacity 0.8s ease-in-out;
+      transition: opacity 1.4s ease-in-out;
       background-size: cover;
       background-position: center;
     }
   </style>
-  <script>
-    // Array of images to cycle through
-    const images = [
-      "image1.png",
-      "image2.png",
-      "image3.png"
-    ];
-    let currentIndex = 0;
+<script>
+  const images = [
+    "oil_scene1.jpg",
+    "oil_scene2.jpg",
+    "oil_scene3.jpg"
+  ];
+  let currentIndex = 0;
+  let activeBg = 1;
 
-    function changeBackground() {
-      const bg = document.getElementById('vookst_bg');
-      bg.style.opacity = 0; // Fade out
+  function changeBackground() {
+    const nextIndex = (currentIndex + 1) % images.length;
+    const currentBgId = `vookst_bg${activeBg}`;
+    const nextBgId = `vookst_bg${activeBg === 1 ? 2 : 1}`;
+    
+    const currentBg = document.getElementById(currentBgId);
+    const nextBg = document.getElementById(nextBgId);
 
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length; // Loop through images
-        console.log(currentIndex)
-        bg.style.backgroundImage = `url(${images[currentIndex]})`;
-        bg.style.opacity = 1; // Fade in
-      }, 800); // Matches transition duration
-    }
+    // Set the new image on the next background layer
+    nextBg.style.backgroundImage = `url(./assets/${images[nextIndex]})`;
 
-    // Start auto background change on page load
-    window.onload = function() {
-      const bg = document.getElementById('vookst_bg');
-      bg.style.backgroundImage = `url(${images[currentIndex]})`;
-      setInterval(changeBackground, 5000); // Change every 5 seconds
-    };
-  </script>
+    // Fade in the next layer by making it opaque
+    nextBg.style.opacity = '1';
+    
+    // Fade out the current layer by making it transparent
+    currentBg.style.opacity = '0';
+
+    // After the transition, swap the active layer
+    activeBg = activeBg === 1 ? 2 : 1;
+    currentIndex = nextIndex;
+  }
+
+  // Initial setup on page load
+  window.onload = function() {
+    document.getElementById('vookst_bg1').style.backgroundImage = `url(./assets/${images[currentIndex]})`;
+    document.getElementById('vookst_bg1').style.opacity = '1';
+    setInterval(changeBackground, 4000); // Wait for 4 seconds before the next transition
+  };
+</script>
 </head>
 <body>
   <header class="text-white mx-auto text-center">
@@ -69,11 +79,19 @@
     </div>
   </header>
 
-  <main class="p-8 max-w-2xl mx-auto my-8 bg-white rounded-lg shadow-md">
+
+   <div class="relative h-96 overflow-hidden">
+  <div id="vookst_bg1" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center"></div>
+  <div id="vookst_bg2" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center opacity-0"></div>
+  <div id="vookst_content" class="relative z-10 h-full flex flex-col items-center justify-center text-white font-bold">
+    <h1 class="text-5xl">Welcome to Vookst</h1>
+    <p class="mx-16 my-8 text-xl text-center ">An Exploration and Production Integrated Project Management Company; executing Field Development Programs, Wells Turnkey Projects, Turnkey Oil and Gas Infrastructure Engineering, and Construction projects including Hydrocarbon Processing Facilities, pipelines, Manifolds and platforms. We provide facilities O and M services for clients to world-class standards</p>
+  </div>
+</div>
+
+  <main class="p-8 max-w-2xl  bg-white ">
     <!-- Background container -->
-    <div id="vookst_bg" class="h-64 flex items-center justify-center text-white font-bold">
-      Auto-fading background!
-    </div>
+   
 
     <h2 class="text-2xl font-semibold mb-4">About</h2>
     <p class="text-gray-700">This is a simple HTML website template. You can customize it to fit your needs.</p>
