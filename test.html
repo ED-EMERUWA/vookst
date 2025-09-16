@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    $(document).ready(function() {
+  $('#headerVideoLink').magnificPopup({
+    type:'inline',
+    midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+  });         
+});
+</script>
+<style>
+    #headerPopup{
+  width:75%;
+  margin:0 auto;
+}
+
+#headerPopup iframe{
+  width:100%;
+  margin:0 auto;
+}
+</style>
+<body>
+    
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-center display-4 mt-5">
+        Solodev Web Design & Content Management Software
+      </h1>
+      <p class="text-center mt-5">
+        <a href="#headerPopup" id="headerVideoLink" target="_blank" class="btn btn-outline-danger popup-modal">See Why Solodev WXP</a>
+      </p>
+      <div id="headerPopup" class="mfp-hide embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/qN3OueBm9F4?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
