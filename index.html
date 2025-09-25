@@ -7,56 +7,70 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* No additional styles needed here */
+    .typewriterContainer
+    {
+      display: inline-block;
+    }
+    #typewriter{
+     width:100%;
+     white-space: nowrap;
+     overflow: hidden; 
+     border-right: 5px solid;
+     animation:
+      cursor .4s step-end infinite alternate;
+    }
+/* Blinking cursor */
+@keyframes cursor{
+  50% { border-color:transparent  }
+}
   </style>
-<script>
-  const images = [
-    "oil_scene1.jpg",
-    "oil_scene2.jpg",
-    "oil_scene3.jpg"
-  ];
-  
-  // Preload all images to avoid flash on first cycle
-  images.forEach(image => {
-    const img = new Image();
-    img.src = `./assets/${image}`;
-  });
+
+  <script>
+  // preloading images
+  const images = ["oil_scene1.jpg","oil_scene2.jpg","oil_scene3.jpg"];
+  images.forEach(image => { new Image().src = `./assets/${image}`; });
 
   let currentIndex = 0;
   let activeBg = 1;
-
   function changeBackground() {
     const nextIndex = (currentIndex + 1) % images.length;
     const currentBgId = `vookst_bg${activeBg}`;
     const nextBgId = `vookst_bg${activeBg === 1 ? 2 : 1}`;
-    
+
     const currentBg = document.getElementById(currentBgId);
     const nextBg = document.getElementById(nextBgId);
 
-    // Set the new image on the next background layer
     nextBg.style.backgroundImage = `url(./assets/${images[nextIndex]})`;
-
-    // Fade in the next layer by making it opaque
     nextBg.style.opacity = '1';
-    
-    // Fade out the current layer by making it transparent
     currentBg.style.opacity = '0';
 
-    // After the transition, swap the active layer
     activeBg = activeBg === 1 ? 2 : 1;
     currentIndex = nextIndex;
   }
 
-  // Start auto background change on page load
+  // one onload to run everything
   window.onload = function() {
-    // We don't need to set the first image here anymore as it's set in the HTML
-    setInterval(changeBackground, 4000); // Wait for 4 seconds before the next transition
+    // typewriter for all .typewriter elements
+    document.querySelectorAll('.typewriter').forEach(el => {
+      const content = el.textContent;  // or innerHTML if you need tags
+      el.textContent = ''; // clear it
+      for (let i = 0; i < content.length; i++) {
+        setTimeout(() => {
+          el.textContent += content.charAt(i);
+        }, 350 * i);
+      }
+    });
+
+    // background rotation
+    setInterval(changeBackground, 4000);
   };
 </script>
+
 </head>
 <body>
   <header class="text-white mx-auto text-center">
     <div>
-      <span class="flex justify-between bg-black items-center">
+      <span class="flex justify-between bg-gray-950 items-center">
         <span class="py-4 bg-red-500 px-2">Monday - Saturday: 8AM -5PM</span>
         <span class="space-x-2 px-2 flex flex-row mx-4">
           <p>+234123567890</p>
@@ -68,7 +82,7 @@
         <a href="./index.html"><img src="" alt="Vookst Logo"></a>
         <nav class="flex flex-row justify-between space-x-3">
           <a href="" class="hover:underline hover:text-red-500">Home</a>
-          <a href="" class="hover:underline hover:text-red-500">About</a>
+          <a href="./about.html" class="hover:underline hover:text-red-500">About</a>
           <a href="" class="hover:underline hover:text-red-500">Projects</a>
           <a href="" class="hover:underline hover:text-red-500">Investors</a>
           <a href="" class="hover:underline hover:text-red-500">Careers</a>
@@ -80,40 +94,188 @@
   </header>
 
 
-  <div class="relative h-screen overflow-hidden">
-    <div id="vookst_bg1" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center" style="background-image: url('./assets/oil_scene1.jpg');"></div>
-    <div id="vookst_bg2" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center opacity-0"></div>
-    <div id="vookst_content" class="relative z-10 h-full flex flex-col items-center justify-center text-white font-bold">
-      <h5 class="text-lg mb-2 border-t-2 p-1">Welcome to</h5>
-      <h1 class="text-5xl">Vookst Energy</h1>
-      <p class="mx-32 my-8 text-xl text-center p-8">An Exploration and Production Integrated Project Management Company; executing Field Development Programs, Wells Turnkey Projects, Turnkey Oil and Gas Infrastructure Engineering, and Construction projects including Hydrocarbon Processing Facilities, pipelines, Manifolds and platforms. We provide facilities O and M services for clients to world-class standards</p>
-      <a href="" class="border-t-2 text-white px-6 py-3 mt-4 hover:scale-110 duration-200">Get Started</a>
-    </div>
+  <div class="relative h-[70vh] md:h-screen overflow-hidden">
+  <!-- Background layers -->
+  <div id="vookst_bg1" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center" style="background-image: url('./assets/oil_scene1.jpg');"></div>
+  <div id="vookst_bg2" class="absolute inset-0 transition-opacity duration-1000 ease-in-out bg-cover bg-center opacity-0"></div>
+
+  <!-- Content -->
+  <div id="vookst_content" class="relative z-10 h-full flex flex-col items-center justify-center text-white font-bold px-4">
+    <h5 class="text-base sm:text-lg mb-2 border-t-2 p-1">Welcome to</h5>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl text-center">Vookst Energy</h1>
+    <p class="text-sm sm:text-base md:text-xl text-center my-6 sm:my-8 max-w-3xl">
+      An Exploration and Production Integrated Project Management Company; executing Field Development Programs, Wells Turnkey Projects, Turnkey Oil and Gas Infrastructure Engineering, and Construction projects including Hydrocarbon Processing Facilities, pipelines, Manifolds and platforms. We provide facilities O and M services for clients to world-class standards
+    </p>
+    <a href="" class="border-t-2 text-white px-4 sm:px-6 py-2 sm:py-3 mt-4 hover:scale-110 duration-200 text-sm sm:text-base">
+      Get Started
+    </a>
   </div>
+</div>
+
 
   <main class=" bg-white ">
    
-    <div  class=" p-2 flex flex-row bg-red-400  h-96 ">
-      <span class="h-fit w-4/8 p-2">
-      <h2 class="text-3xl font-bold mb-4 text-left ">About Vookst Energy</h2>
-      <p class="text-left text-lg leading-7 ">Vookst Energy stands at the forefront of the energy sector, specializing in a comprehensive range of services vital to the industry's success.
-        With expertise spanning drilling engineering, subsurface studies, and production operations, we are committed to delivering innovative solutions that drive efficiency, optimize performance, and maximize returns.
-        Our dedication to excellence and industry-leading practices positions us as a trusted partner for clients seeking to navigate the complexities of energy exploration and production. At Vookst Energy, we are not just shaping the future of energy; we are leading it.
-      </p>
-      </span>
-      <img src="./assets/vookst_pen.png" alt="Vookst Pen" class="  h-full w-1/8 motion-safe:animate-pulse">
-      <div class="bg-[url('./assets/vookst_ipad.png')] bg-no-repeat bg-cover bg-center h-fit w-3/8">
-    <!-- content inside if any -->
-     <button class="">
-        <i class="fa-solid fa-play"></i>
-      </button>
+   <section class="bg-gray-900 py-16 text-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12">About Vookst Energy</h2>
+    <p class="max-w-3xl mx-auto text-gray-300 mb-16">
+      Vookst Energy stands at the forefront of the energy sector, delivering innovative solutions that drive efficiency, optimize performance, and maximize returns.
+      With unmatched expertise across drilling engineering, subsurface studies, and production operations, we are not just shaping the future of energy—we are leading it.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      
+      <div class="typewriterContainer" >
+        <p class="typewriter text-4xl font-bold text-red-500" id="typewriter1">Drilling</p>
+        <p class="mt-2 text-gray-300">Engineering precision that maximizes efficiency and reduces risks in complex projects.</p>
+      </div>
+
+      <div class="typewriterContainer">
+        <p class="typewriter text-4xl font-bold text-red-500" id="typewriter2" >Subsurface</p>
+        <p class="mt-2 text-gray-300">Advanced studies and modeling that unlock deeper insights for resource potential.</p>
+      </div>
+
+      <div class="typewriterContainer">
+        <p class="typewriter text-4xl font-bold text-red-500" id="typewriter3">Operations</p>
+        <p class="mt-2 text-gray-300">Seamless production support ensuring optimal performance and long-term returns.</p>
+      </div>
+
     </div>
+  </div>
+</section>
+    <section class="py-16 bg-gray-100">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-12">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold mb-4">Exploration & Production</h3>
+            <p class="text-gray-700">Comprehensive solutions from exploration to production, ensuring efficient resource management and maximized output.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold mb-4">Field Development</h3>
+            <p class="text-gray-700">Strategic planning and execution of field development programs tailored to client needs.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold mb-4">Turnkey Projects</h3>
+            <p class="text-gray-700">End-to-end project management delivering turnkey solutions for wells and infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="py-12 bg-white space-y-4">
+  
+  <div class="flex flex-col md:flex-row items-center gap-8">
+    <!-- Text content -->
+    <div class="flex flex-col w-full md:w-1/2 px-6">
+      <h5 class="text-red-500 text-lg font-semibold mb-2">Our Services</h5>
+      <h2 class="text-3xl font-bold mb-4">Advanced Subsurface Solutions</h2>
+      <p class="text-xl leading-relaxed pr-0 md:pr-20 pl-4">
+        Explore the depths with confidence using our advanced subsurface services. From reservoir characterization to wellbore integrity, we employ cutting-edge techniques for accurate analysis and optimized production. Partner with us to unlock the full potential of your subsurface assets.
+      </p>
+    </div>
+
+    <!-- Image -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img src="./assets/card_image1.png" alt="Subsurface Services" 
+           class="w-full md:w-11/12 object-contain rounded-lg shadow-lg">
+    </div>
+  </div>
+
+
+  <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+    <!-- Text content -->
+    <div class="flex flex-col w-full md:w-1/2 px-6">
+      <h5 class="text-red-500 text-lg font-semibold mb-2">Our Services</h5>
+      <h2 class="text-3xl font-bold mb-4">Advanced Well Completion Solutions</h2>
+      <p class="text-xl leading-relaxed pr-0 md:pr-20 pl-4">
+        Harness the power of cutting-edge technology and technical expertise with our comprehensive well completion services. From intricate downhole equipment installation to precise reservoir access, we engineer tailored solutions for optimal production and reservoir management. Maximize efficiency and performance with our advanced well completion techniques.      </p>
+    </div>
+
+    <!-- Image -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img src="./assets/card_image2.png" alt="Subsurface Services" 
+           class="w-full md:w-11/12 object-contain rounded-lg shadow-lg">
+    </div>
+
     
+  </div>
+
+  <div class="flex flex-col md:flex-row items-center gap-8">
+    <!-- Text content -->
+    <div class="flex flex-col w-full md:w-1/2 px-6">
+      <h5 class="text-red-500 text-lg font-semibold mb-2">Our Services</h5>
+      <h2 class="text-3xl font-bold mb-4">Optimized Production Solutions</h2>
+      <p class="text-xl leading-relaxed pr-0 md:pr-20 pl-4">
+       Unlock peak production potential with our advanced production services. From reservoir analysis to facility optimization, we engineer tailored solutions for efficient extraction and processing. Trust our expertise to enhance your production operations and maximize returns.”    </div>
+
+    <!-- Image -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img src="./assets/card_image3.png" alt="Subsurface Services" 
+           class="w-full md:w-11/12 object-contain rounded-lg shadow-lg">
+    </div>
+</section>
+
+<div class="relative h-[70vh] md:h-[85vh] overflow-hidden bg-cover bg-center" style="background-image: url('./assets/vookst_skyscraper.png');">
+  <div class="relative z-10 h-full flex flex-col items-center justify-center text-white font-bold px-4">
+    <h5 class="text-base sm:text-lg mb-5 border-t-2 p-1">Vookst Energy</h5>
+    <h1 class="text-3xl sm:text-4xl md:text-4xl text-center mt-2">Investment and Partnerships</h1>
+    <p class="text-base sm:text-lg md:text-lg text-center my-6 sm:my-8 max-w-2xl">
+      Join us in our journey to redefine the landscape of energy. We welcome investors and partners to collaborate with our dynamic team. Together, we’ll seize new opportunities, innovate, and create lasting value. Let’s forge a prosperous future together.
+    </p>
+    <a href="" class="border-t-2 text-white px-4 sm:px-6 py-2 sm:py-3 mt-4 hover:scale-110 duration-200 text-sm sm:text-base">
+      LEARN MORE →
+    </a>
+  </div>
 </div>
-   
 
     </main>
+<footer class="w-full bg-gray-950 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
+    <!-- Logo and About -->
+    <div>
+      <!-- Replace the src with your actual logo path -->
+      <img src="/path/to/logo.png" alt="Vookst Energy Logo" class="h-10 mb-4">
+      <p class="text-gray-300">
+        Vookst Energy specializes in  <span class="text-red-500 font-semibold">drilling </span>engineering, <span class="text-red-500 font-semibold">subsurface </span>studies, and <span class="text-red-500 font-semibold"></span>production</span> operations</span> .
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-xl font-bold mb-4 text-red-500">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline hover:text-red-500">Home</a></li>
+        <li><a href="./about.html" class="hover:underline hover:text-red-500">About</a></li>
+        <li><a href="#" class="hover:underline hover:text-red-500">Services</a></li>
+        <li><a href="#" class="hover:underline hover:text-red-500">Projects</a></li>
+        <li><a href="#" class="hover:underline hover:text-red-500">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-xl font-bold mb-4 text-red-500">Contact Us</h3>
+      <p class="text-gray-300">123 Energy Lane<br>Houston, TX 77002</p>
+      <p class="text-gray-300 mt-2">Phone: +1 (234) 567-8901</p>
+      <p class="text-gray-300">Email: <a href="mailto:info@vookstenergy.com" class="hover:text-red-500 hover:underline">info@vookstenergy.com</a></p>
+    </div>
+
+    <!-- Socials or extra (optional) -->
+    <div>
+      <h3 class="text-xl font-bold mb-4 text-red-500">Follow Us</h3>
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-300 hover:text-red-500">Twitter</a>
+        <a href="#" class="text-gray-300 hover:text-red-500">LinkedIn</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="border-t border-gray-800 text-center py-4 text-sm text-gray-400">
+    &copy; 2024 Vookst Energy. All rights reserved.
+  </div>
+</footer>
   <!-- <footer class="text-center py-4 bg-gray-900 text-gray-300 fixed w-full bottom-0">
     &copy; 2024 Vookst. All rights reserved.
   </footer> -->
