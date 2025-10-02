@@ -3,37 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Vookst Energy</title>
+  <title>Vookst Energy</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-800">
+  <script defer src="scroll.js"></script>
 
-  <!-- Hero Section -->
+  
+  <style>
+    .hide {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateX(-100%);
+      transition: all 1s ease-out;
+    }
+
+    .show {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Hero / Intro -->
+  
+      <span class="bg-white text-black px-4 flex flex-row justify-between items-center py-4">
+        <a href="./index.html"><img src="" alt="Vookst Logo"></a>
+        <nav class="flex flex-row justify-between space-x-3">
+          <a href="./index.html" class="hover:underline hover:text-red-500">Home</a>
+          <a href="./about.html" class="hover:underline hover:text-red-500">About</a>
+          <a href="./projects.html" class="hover:underline hover:text-red-500">Projects</a>
+          <a href="./investors.html" class="hover:underline hover:text-red-500">Investors</a>
+          <a href="./careers.html" class="hover:underline hover:text-red-500">Careers</a>
+          <a href="./publications.html" class="hover:underline hover:text-red-500">Publications</a>
+        </nav>
+        <a href="" class="bg-red-500 text-white px-4 py-2 rounded">Request a Quote</a>
+      </span>
   <section class="bg-gray-900 text-red-500 h-[50vh] flex items-center">
-    <div class="max-w-5xl mx-auto px-6">
+
+    <div class="max-w-5xl px-6">
       <h1 class="text-5xl md:text-6xl font-bold">About Vookst</h1>
     </div>
   </section>
+  
+  <section class="bg-white py-16 px-8">
+    <div class="max-w-5xl mx-auto text-center px-4 ">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Who We Are</h1>
+      <p class="text-lg md:text-xl leading-relaxed">
+        Vookst Energy stands as a premier upstream oil and gas servicing company, positioned at the forefront of industry innovation. 
+        With a dedicated focus on excellence, we offer a comprehensive suite of services encompassing drilling engineering, 
+        subsurface studies, and production operations. Our commitment to delivering sustainable solutions is evident in our approach, 
+        where safety, efficiency, and environmental responsibility are paramount.
+      </p>
+    </div>
+  </section>
+<!-- Cards Section -->
+<section class="py-12 bg-gray-100 ">
+  <div class="w-full mx-auto px-12 grid gap-8 md:flex flex-col">
+    <!-- Card 1 -->
+    <div class="hide bg-white p-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Innovation & Excellence</h2>
+      <p class="text-gray-600 text-base md:text-lg">
+        Driven by a passion for excellence, we continuously strive to exceed industry standards and meet the evolving needs of our clients. 
+        At Vookst Energy, innovation is not just a goal; it’s ingrained in our culture. By leveraging cutting-edge technologies and best practices, 
+        we empower our clients to navigate complex challenges and achieve their operational objectives with confidence.
+      </p>
+    </div>
 
-  <!-- Content Section -->
-  <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
-    <p class="text-lg leading-relaxed">
-      Vookst Energy stands as a premier upstream oil and gas servicing company, positioned at the forefront of industry innovation. With a dedicated focus on excellence, we offer a comprehensive suite of services encompassing drilling engineering, subsurface studies, and production operations. Our commitment to delivering sustainable solutions is evident in our approach, where safety, efficiency, and environmental responsibility are paramount.
-    </p>
-    <p class="text-lg leading-relaxed">
-      Driven by a passion for excellence, we continuously strive to exceed industry standards and meet the evolving needs of our clients. At Vookst Energy, innovation is not just a goal; it’s ingrained in our culture. By leveraging cutting-edge technologies and best practices, we empower our clients to navigate complex challenges and achieve their operational objectives with confidence.
-    </p>
-    <p class="text-lg leading-relaxed">
-      Join us in shaping the future of upstream oil and gas services. Partner with Vookst Energy and experience the difference that our unwavering dedication to excellence and innovation can make for your projects.
-    </p>
+    <!-- Card 2 -->
+    <div class="hide bg-gray-800 p-8 text-center w-full">
+      <h2 class="text-2xl md:text-3xl font-bold text-red-600 mb-4">Our Expertise</h2>
+      <p class="text-gray-300 text-base md:text-lg">
+        Vookst Energy is a premier upstream oil and gas servicing company at the forefront of industry innovation. 
+        We deliver a comprehensive suite of services — from drilling engineering and subsurface studies to production operations — 
+        with safety, efficiency and environmental responsibility at the core of everything we do.
+      </p>
+    </div>
 
-    <!-- Optional call to action button -->
-    <div class="pt-4">
-      <a href="#contact" class="inline-block bg-red-500 text-white px-6 py-3 rounded-xl shadow hover:bg-red-600 transition">
-        Contact Us
-      </a>
+    <!-- Card 3 -->
+    <div class="hide bg-white p-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Safety & Sustainability</h2>
+      <p class="text-gray-600 text-base md:text-lg">
+        Our commitment to safety, efficiency, and environmental responsibility defines our approach. 
+        We deliver sustainable solutions that help our clients succeed while protecting people and the planet.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="hide bg-gray-800 p-8 text-center w-full">
+      <h2 class="text-2xl md:text-3xl font-bold text-red-600 mb-4">Partner With Us</h2>
+      <p class="text-gray-300 text-base md:text-lg">
+        Join us in shaping the future of upstream oil and gas services. 
+        Partner with Vookst Energy to experience the difference our dedication to excellence and innovation can bring to your projects.
+      </p>
+    </div>
+  </div>
+</section>
+
     </div>
   </section>
 
+  <!-- Call to Action -->
+  <section class="bg-white py-16">
+    <div class="max-w-3xl mx-auto text-center px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Shape the Future with Us</h2>
+      <p class="text-gray-700 mb-8">
+        Join us in shaping the future of upstream oil and gas services. Partner with Vookst Energy and experience the difference 
+        our unwavering dedication to excellence and innovation can make for your projects.
+      </p>
+      <a href="#contact" class="inline-block bg-red-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-600 transition">
+        Partner with Vookst Energy
+      </a>
+    </div>
+  </section>
 </body>
 </html>
