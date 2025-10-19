@@ -1,81 +1,139 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vookst Energy | Investors</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body >
-   <span class="bg-white text-black px-4 flex flex-row justify-between items-center py-4">
-        <a href="./index.html"><img src="./assets/vookst_logo.png" class="h-12 w-40" alt="Vookst Logo"></a>
-        <nav class="flex flex-row justify-between space-x-4">
-          <a href="./index.html" class="hover:underline hover:text-red-500">Home</a>
-          <a href="./about.html" class="hover:underline hover:text-red-500">About</a>
-          <a href="./projects.html" class="hover:underline hover:text-red-500">Projects</a>
-          <a href="./investors.html" class="hover:underline hover:text-red-500">Investors</a>
-          <a href="./careers.html" class="hover:underline hover:text-red-500">Careers</a>
-          <a href="./publications.html" class="hover:underline hover:text-red-500">Publications</a>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <!-- Left Menu -->
+      <nav class="hidden md:flex gap-5 text-sm font-medium">
+        <a href="./index.html" class="hover:text-red-500">Home</a>
+        <a href="./about.html" class="hover:text-red-500">About</a>
+        <a href="./projects.html" class="hover:text-red-500">Projects</a>
+      </nav>
+
+      <!-- Logo -->
+      <a href="./index.html" class="mx-auto md:mx-0">
+        <img src="./assets/vookst_logo.png" class="h-10" alt="Vookst Logo">
+      </a>
+
+      <!-- Right Menu + CTA -->
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex gap-5 text-sm font-medium">
+          <a href="./investors.html" class="text-red-600 font-semibold">Investors</a>
+          <a href="./careers.html" class="hover:text-red-500">Careers</a>
+          <a href="./publications.html" class="hover:text-red-500">Publications</a>
         </nav>
-        <a href="" class="bg-red-500 text-white px-4 py-2 rounded">Request a Quote</a>
-      </span>
-  <section class="m-0 p-0 overflow-x-hidden">
-  <div class="relative w-screen h-screen">
-    <!-- Top Section -->
-    <div 
-      class="absolute inset-0 bg-cover bg-center flex items-center justify-center text-5xl font-bold text-white shadow-xl"
-      style="background-image: url('./assets/projects_img.png');">
-      
+        <a href="#" class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600">
+          Get Quote
+        </a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Bottom Section -->
-  <div 
-    style="position: absolute; top: 50%;  left:10% ;color: black;"
-    class="bottom bg-white p-10 rounded-lg text-lg font-semibold shadow-md mx-8 w-3/4">
+  <!-- Hero Section with Overlay Card -->
+  <section class="relative h-[85vh] bg-cover bg-center" style="background-image: url('./assets/projects_img.png');">
+    <div class="absolute inset-0 bg-black/60 flex items-center justify-center px-4">
+      <div class=" max-w-2xl p-8 rounded-lg shadow-lg text-center">
+        <p class=" uppercase text-sm tracking-widest text-red-600 font-bold mb-2">Vookst Energy</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gray-100 mb-4">Invest in the Future of Energy</h1>
+        <p class="text-white text-lg mb-6">
+          Join a community of forward-thinking investors shaping a sustainable energy future with Vookst.
+        </p>
+        <a href="#opportunities" class="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 transition">
+          Explore Opportunities
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="flex flex-col items-center text-center space-y-4 my-10">
-  <!-- Small Title -->
-  <p class="text-gray-500 uppercase tracking-[0.3em] text-sm font-semibold">
-    Vookst Energy
-  </p>
+  <!-- Features Section -->
+  <section id="opportunities" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Choose Vookst Energy?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-  <!-- Main Header -->
-  <div class="flex items-center justify-center gap-4">
-    <div class="w-10 h-1 bg-red-600 rounded-full"></div>
-    <h4 class="text-4xl md:text-5xl font-extrabold text-gray-900 uppercase tracking-wide">
-      Investors
-    </h4>
-    <div class="w-10 h-1 bg-red-600 rounded-full"></div>
-  </div>
+        <!-- Card 1 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div class="mb-4 text-red-500">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 4.2 5.8 11.3 6.2 11.8.2.2.6.2.8 0 .4-.5 6-7.6 6-11.8 0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Targeted Drilling Projects</h4>
+          <p class="text-gray-600">
+            Precision-engineered drilling operations designed for long-term efficiency and production.
+          </p>
+        </div>
 
-  <!-- Divider Line -->
-  <div class="w-24 h-[2px] bg-gray-300 mt-3"></div>
-</div>
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div class="mb-4 text-red-500">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M13 3c0-.6-.4-1-1-1s-1 .4-1 1v1H8.4c-.8 0-1.5.5-1.8 1.2L4.3 8H3c-.6 0-1 .4-1 1v1c0 .5.4.9.9 1l.1 6c0 1.7 1.3 3 3 3h12c1.7 0 3-1.3 3-3v-6c.6 0 1-.4 1-1V9c0-.6-.4-1-1-1h-1.3l-2.3-2.8c-.3-.7-1-1.2-1.8-1.2H13V3z"/></svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Advanced Subsurface Analysis</h4>
+          <p class="text-gray-600">
+            Data-driven insights to minimize risk and maximize discovery potential.
+          </p>
+        </div>
 
-Welcome to Vookst Energy’s Investors Page, your gateway to exploring investment opportunities and partnerships in the dynamic energy sector. As a leading upstream oil and gas servicing company, we offer investors the chance to participate in projects that drive innovation, sustainability, and growth.
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div class="mb-4 text-red-500">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3v18l7-5 7 5V3H5zm14 13.7l-5-3.6-5 3.6V5h10v11.7z"/></svg>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Optimized Production</h4>
+          <p class="text-gray-600">
+            Technologies and strategies that unlock full asset value while maintaining sustainability.
+          </p>
+        </div>
 
-Why Invest in Vookst Energy?
+      </div>
+    </div>
+  </section>
 
-At Vookst Energy, we are committed to delivering value to our investors through a strategic focus on operational excellence, technological innovation, and sustainable practices. Our track record of success, coupled with a forward-thinking approach, positions us as a preferred partner for investors seeking opportunities in the energy industry.
+  <!-- Call to Action - Split Layout -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h3 class="text-3xl font-bold mb-4">Let’s Build the Future of Energy Together</h3>
+        <p class="text-gray-700 mb-6">
+          Partner with Vookst Energy and join a network of innovators, investors, and industry leaders transforming how energy works.
+        </p>
+        <a href="#" class="inline-block bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 transition">
+          Contact Investor Relations
+        </a>
+      </div>
+      <img src="./assets/vookst_logo.png" alt="Vookst Energy" class="w-full max-w-md mx-auto md:mx-0">
+    </div>
+  </section>
 
-Investment Opportunities:
-
-Vookst Energy offers a range of investment opportunities across our diverse portfolio of projects. Whether you’re interested in financing drilling operations, supporting subsurface studies, or participating in production optimization initiatives, we provide avenues for investors to contribute to the advancement of our business while maximizing returns.
-
-Partner with Us:
-
-We believe in the power of collaboration and partnership to drive mutual success. By partnering with Vookst Energy, investors gain access to our industry expertise, innovative solutions, and extensive network, creating opportunities for growth and value creation.
-
-Get in Touch:
-
-Explore investment opportunities with Vookst Energy today. Contact our Investor Relations team to learn more about how you can join us in shaping the future of energy.
-
-  </div>
-</div>
-</section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-sm py-6">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+      <p>&copy; 2025 Vookst Energy. All rights reserved.</p>
+      <div class="flex space-x-4 mt-2 md:mt-0">
+        <a href="#" class="hover:text-red-400">Twitter</a>
+        <a href="#" class="hover:text-red-400">LinkedIn</a>
+        <a href="#" class="hover:text-red-400">Facebook</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
-
