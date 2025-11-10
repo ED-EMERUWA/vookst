@@ -1,2 +1,2 @@
 # vookst
-Daddy's website
+Official Git repository of Vookst Energy
