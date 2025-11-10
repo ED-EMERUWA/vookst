@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vookst Energy | Investors</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./src/output.css" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -20,34 +20,42 @@
 <body class="bg-gray-50 font-sans text-gray-800">
 
   <!-- Navbar -->
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <!-- Left Menu -->
-      <nav class="hidden md:flex gap-5 text-sm font-medium">
-        <a href="./index.html" class="hover:text-red-500">Home</a>
-        <a href="./about.html" class="hover:text-red-500">About</a>
-        <a href="./projects.html" class="hover:text-red-500">Projects</a>
-      </nav>
+  <header class="text-white mx-auto text-center">
+    <div>
+      <span class="flex justify-between bg-gray-950 items-center">
+        <span class="py-4 bg-red-500 px-2">Monday - Saturday: 8AM -5PM</span>
+        <span class="space-x-2 px-2 flex flex-row mx-4">
+          <p>+234123567890</p>
+          <p>info@vookst.com</p>
+        </span>
+      </span>
 
-      <!-- Logo -->
-      <a href="./index.html" class="mx-auto md:mx-0">
-        <img src="./assets/vookst_logo.png" class="h-10" alt="Vookst Logo">
-      </a>
+     <span class="bg-white text-black px-4 py-4 flex flex-wrap items-center justify-between gap-4 shadow-md">
 
-      <!-- Right Menu + CTA -->
-      <div class="flex items-center gap-4">
-        <nav class="hidden md:flex gap-5 text-sm font-medium">
-          <a href="./investors.html" class="text-red-600 font-semibold">Investors</a>
-          <a href="./careers.html" class="hover:text-red-500">Careers</a>
-          <a href="./publications.html" class="hover:text-red-500">Publications</a>
-        </nav>
-        <a href="#" class="bg-red-500 text-white px-4 py-2 rounded text-sm hover:bg-red-600">
-          Get Quote
-        </a>
-      </div>
+  <!-- Logo -->
+  <a href="./index.html" class="flex-shrink-0">
+    <img src="./assets/vookst_logo.png" class="h-12 w-40" alt="Vookst Logo">
+  </a>
+
+  <!-- Nav links -->
+  <nav class="flex flex-col md:flex-row flex-wrap gap-2 md:gap-6 text-sm md:text-base w-full md:w-auto">
+    <a href="./index.html" class="hover:underline hover:text-red-500">Home</a>
+    <a href="./about.html" class="hover:underline hover:text-red-500">About</a>
+    <a href="./projects.html" class="hover:underline hover:text-red-500">Projects</a>
+    <a href="./investors.html" class="hover:underline hover:text-red-500  text-red-500">Investors</a>
+    <a href="./careers.html" class="hover:underline hover:text-red-500">Careers</a>
+    <a href="./publications.html" class="hover:underline hover:text-red-500">Publications</a>
+  </nav>
+
+  <!-- CTA Button -->
+  <a href="./contact.html" class="bg-red-500 text-white px-4 py-2 rounded text-sm md:text-base w-full md:w-auto text-center">
+    Request a Quote
+  </a>
+
+</span>
+
     </div>
   </header>
-
   <!-- Hero Section with Overlay Card -->
   <section class="relative h-[85vh] bg-cover bg-center" style="background-image: url('./assets/projects_img.png');">
     <div class="absolute inset-0 bg-black/60 flex items-center justify-center px-4">
@@ -107,30 +115,61 @@
     </div>
   </section>
 
-  <!-- Call to Action - Split Layout -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h3 class="text-3xl font-bold mb-4">Let’s Build the Future of Energy Together</h3>
-        <p class="text-gray-700 mb-6">
-          Partner with Vookst Energy and join a network of innovators, investors, and industry leaders transforming how energy works.
-        </p>
-        <a href="#" class="inline-block bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 transition">
-          Contact Investor Relations
-        </a>
-      </div>
-      <img src="./assets/vookst_logo.png" alt="Vookst Energy" class="w-full max-w-md mx-auto md:mx-0">
-    </div>
-  </section>
+
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white text-sm py-6">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-      <p>&copy; 2025 Vookst Energy. All rights reserved.</p>
-      <div class="flex space-x-4 mt-2 md:mt-0">
-        <a href="#" class="hover:text-red-400">Twitter</a>
-        <a href="#" class="hover:text-red-400">LinkedIn</a>
-        <a href="#" class="hover:text-red-400">Facebook</a>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 border-t-4 border-red-500">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        
+        <!-- Logo Section -->
+        <div class="flex flex-col items-start">
+          <img src="./assets/vookst_logo.png" class="h-12 w-40 mb-4 brightness-0 invert" alt="Vookst Logo">
+          <p class="text-sm text-gray-400 mb-4">
+            Leading the future of upstream oil and gas services with <span class="text-red-500 font-semibold">innovation</span> and <span class="text-red-500 font-semibold">excellence</span>.
+          </p>
+          
+          <!-- Contact Info -->
+          <div class="text-sm space-y-2">
+            <p class="text-gray-400">
+              <span class="text-red-500">Phone:</span> 
+              <a href="tel:+12345678901" class="hover:text-red-500 transition">+1 (234) 567-8901</a>
+            </p>
+            <p class="text-gray-400">
+              <span class="text-red-500">Email:</span> 
+              <a href="mailto:info@vookstenergy.com" class="hover:text-red-500 transition">info@vookstenergy.com</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-red-500 font-semibold mb-3">Company</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="./index.html" class="hover:text-red-500 transition">Home</a></li>
+              <li><a href="./about.html" class="hover:text-red-500 transition">About Us</a></li>
+              <li><a href="./projects.html" class="hover:text-red-500 transition">Projects</a></li>
+              <li><a href="./publications.html" class="hover:text-red-500 transition">Publications</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-red-500 font-semibold mb-3">Connect</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="./investors.html" class="hover:text-red-500 transition">Investors</a></li>
+              <li><a href="./careers.html" class="hover:text-red-500 transition">Careers</a></li>
+              <li><a href="#contact" class="hover:text-red-500 transition">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-500">
+        <p>&copy; 2024 Vookst Energy. All rights reserved.</p>
       </div>
     </div>
   </footer>
